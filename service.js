@@ -2,6 +2,7 @@ const CASH_NAME = "cache_name"
 
 
 self.addEventListener('install', (event) => {
+    console.log("触发install事件")
     // 安装过程下载缓存一些资源
     event.waitUntil(caches.open(CASH_NAME).then(cache => {
        return cache.addAll([
@@ -11,6 +12,7 @@ self.addEventListener('install', (event) => {
 })
 
 self.addEventListener('active', (event) => {
+    console.log("触发active事件")
     //主要清理一些旧service worker的资源
     event.waitUntil(caches.keys().then(r => {
         if(r !== CASH_NAME) caches.delete()
