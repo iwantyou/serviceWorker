@@ -11,8 +11,8 @@ self.addEventListener('install', (event) => {
     }))
 })
 
-self.addEventListener('active', (event) => {
-    console.log("触发active事件")
+self.addEventListener('activate', (event) => {
+    console.log("触发activate事件")
     //主要清理一些旧service worker的资源
     event.waitUntil(caches.keys().then(r => {
         if(r !== CASH_NAME) caches.delete()
